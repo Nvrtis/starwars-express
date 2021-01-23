@@ -2,9 +2,43 @@ const express = require("express")
 const app = express()
 const PORT = 3000
 
+const characters = [
+    {
+        name: "Yoda",
+        role: "Jedi Master",
+        forcePoints: 100000,
+        age: 900,
+        avatar: "https://upload.wikimedia.org/wikipedia/en/9/9b/Yoda_Empire_Strikes_Back.png",
+        routeName:"yoda"
+    },{
+        name: "Princess Leia",
+        role: "General Princess",
+        forcePoints: 100,
+        age: 40,
+        avatar: "https://upload.wikimedia.org/wikipedia/en/1/1b/Princess_Leia%27s_characteristic_hairstyle.jpg",
+        routeName:"princessleia"
+    },{
+        name: "Luke Skywalker",
+        role: "Jedi Master",
+        forcePoints: 10000,
+        age: 40,
+        avatar: "https://upload.wikimedia.org/wikipedia/en/9/9b/Luke_Skywalker.png",
+        routeName:"lukeskywalker"
+    },
+
+]
+
 app.get(`/`, (req, res) => {
 res.send("may the force be with you!")
 })
+
+// /api/characters = listen and show all of the characters
+app.get(`/api/characters`, (req, res) => {
+    res.json(characters)
+})
+
+
+// /api/characters/:routeName = shows one character
 
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`);
