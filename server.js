@@ -39,6 +39,18 @@ app.get(`/api/characters`, (req, res) => {
 
 
 // /api/characters/:routeName = shows one character
+app.get(`/api/characters/:routeName`, (req, res) => {
+   const targetCharacter = req.params.routeName
+    const character = characters.find(character => {
+        return character.routeName===targetCharacter
+        
+    })
+    // console.log(character);
+    res.json(character)
+
+})
+
+
 
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`);
