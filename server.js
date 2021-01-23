@@ -1,3 +1,4 @@
+const path = require("path")
 const express = require("express")
 const app = express()
 const PORT = 3000
@@ -33,7 +34,7 @@ const characters = [
 // HTML Routes
 
 app.get(`/`, (req, res) => {
-res.send("may the force be with you!")
+res.sendFile(path.join(__dirname + `/public/index.html`))
 })
 // /api/characters = listen and show all of the characters
 app.get(`/api/characters`, (req, res) => {
@@ -62,3 +63,5 @@ app.post('/api/characters/add', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`);
 })
+
+console.log(__dirname);
